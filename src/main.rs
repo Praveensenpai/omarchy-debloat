@@ -38,8 +38,6 @@ const DEFAULT_PACKAGES: &[(&str, &str)] = &[
 const DESKTOP_ENTRIES_TO_REMOVE: &[&str] = &[
     "typora.desktop",
     "localsend.desktop",
-    "org.freedesktop.IBus.Setup.desktop",
-    "org.gnome.Evince.desktop",
 ];
 
 const DESKTOP_ENTRIES_TO_HIDE: &[&str] = &[
@@ -142,6 +140,15 @@ fn clean_desktop_entries() -> usize {
         let sys_file = format!("/usr/share/applications/{}", entry);
 
         if Path::new(&sys_file).exists() {
+            // If local copy already exists and is already hidden, skip!
+            if Path::new(&target_local).exists() {
+                if let Ok(existing) = fs::read_to_string(&target_local) {
+                    if existing.contains("NoDisplay=true") {
+                        continue;
+                    }
+                }
+            }
+
             if let Ok(content) = fs::read_to_string(&sys_file) {
                 let mut new_content = String::new();
                 let mut inserted = false;
