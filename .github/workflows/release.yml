@@ -1,0 +1,37 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-release:
+    name: Build & Release Binary
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: x86_64-unknown-linux-gnu
+
+      - name: Build Binary
+        run: cargo build --release --target x86_64-unknown-linux-gnu
+
+      - name: Package Archive
+        run: |
+          mkdir -p dist
+          cp target/x86_64-unknown-linux-gnu/release/omarchy-debloat dist/
+          cp README.md LICENSE dist/ 2>/dev/null || true
+          tar -czvf omarchy-debloat-x86_64-unknown-linux-gnu.tar.gz -C dist omarchy-debloat
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: omarchy-debloat-x86_64-unknown-linux-gnu.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
