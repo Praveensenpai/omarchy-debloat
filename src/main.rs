@@ -50,7 +50,6 @@ const DESKTOP_ENTRIES_TO_HIDE: &[&str] = &[
 ];
 
 const NPX_STUBS_TO_REMOVE: &[&str] = &[
-    "codex",
     "copilot",
     "opencode",
     "playwright-cli",
