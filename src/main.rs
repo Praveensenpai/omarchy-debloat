@@ -33,11 +33,19 @@ const DEFAULT_PACKAGES: &[(&str, &str)] = &[
     ("cups-filters", "CUPS Printer Filters"),
     ("cups-browsed", "CUPS Network Printer Browser"),
     ("cups-pdf", "CUPS PDF Printer Driver"),
+    ("moonlight-qt", "Moonlight Game Streaming Client"),
+    ("omacalc", "Omacalc Dead-Simple Calculator"),
+    ("omacut", "Omacut Dead-Simple Video Trimmer"),
+    ("omawrite", "Omawrite Dead-Simple Markdown Writer"),
 ];
 
 const DESKTOP_ENTRIES_TO_REMOVE: &[&str] = &[
     "typora.desktop",
     "localsend.desktop",
+    "moonlight-qt.desktop",
+    "omacalc.desktop",
+    "omacut.desktop",
+    "omawrite.desktop",
 ];
 
 const DESKTOP_ENTRIES_TO_HIDE: &[&str] = &[
