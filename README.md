@@ -39,7 +39,7 @@ omarchy-debloat --list
 
 ### 📦 Purged Target Applications & Components
 
-- **Preinstalled Packages**: `1password-beta`, `spotify`, `libreoffice-fresh`, `signal-desktop`, `obsidian`, `cups`, `kdenlive`, `localsend`, `gnome-calculator`, etc.
+- **Preinstalled Packages**: `1password-beta`, `spotify`, `libreoffice-fresh`, `signal-desktop`, `obsidian`, `cups`, `kdenlive`, `localsend`, `gnome-calculator`, `moonlight-qt`, `omacalc`, `omacut`, `omawrite`, etc.
 - **Orphaned Desktop Files**: Cleans up leftover `.desktop` launchers in `~/.local/share/applications/`.
 - **Hidden System Launchers**: Injects `NoDisplay=true` to hide cluttering system application menus.
 - **NPX Wrapper Stubs**: Cleans up default NPX stubs (`codex`, `copilot`, `opencode`, `pi`, `playwright-cli`).
