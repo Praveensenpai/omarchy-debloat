@@ -42,4 +42,6 @@ fi
 chmod +x "$INSTALL_DIR/omarchy-debloat"
 
 echo -e "${GREEN}✔ omarchy-debloat installed successfully to ${INSTALL_DIR}/omarchy-debloat!${NC}"
+INSTALLED_VERSION=$("$INSTALL_DIR/omarchy-debloat" --version 2>/dev/null || echo "unknown")
+echo -e "${YELLOW}📌 Version installed: ${INSTALLED_VERSION}${NC}"
 echo -e "${CYAN}Run 'omarchy-debloat --help' to get started.${NC}"
