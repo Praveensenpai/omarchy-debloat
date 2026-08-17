@@ -23,10 +23,17 @@ if [ "$ARCH" != "x86_64" ]; then
     exit 1
 fi
 
-DOWNLOAD_URL="https://github.com/${REPO}/releases/latest/download/omarchy-debloat-x86_64-unknown-linux-gnu.tar.gz"
+LATEST_TAG=$(curl -fsSL "https://api.github.com/repos/${REPO}/releases/latest" | grep '"tag_name"' | sed 's/.*"tag_name": *"\(.*\)".*/\1/')
+
+if [ -z "$LATEST_TAG" ]; then
+    echo -e "${RED}❌ Failed to fetch latest release tag from GitHub API.${NC}"
+    exit 1
+fi
+
+echo -e "${BLUE}📦 Downloading binary release ${LATEST_TAG} from GitHub...${NC}"
+DOWNLOAD_URL="https://github.com/${REPO}/releases/download/${LATEST_TAG}/omarchy-debloat-x86_64-unknown-linux-gnu.tar.gz"
 
 if command -v curl &>/dev/null && curl -sI "$DOWNLOAD_URL" | grep -q "302\|200"; then
-    echo -e "${BLUE}📦 Downloading binary release from GitHub...${NC}"
     TMP_DIR=$(mktemp -d)
     curl -fsSL "$DOWNLOAD_URL" | tar -xz -C "$TMP_DIR"
     mv "$TMP_DIR/omarchy-debloat" "$INSTALL_DIR/omarchy-debloat"
