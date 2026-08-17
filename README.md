@@ -7,7 +7,7 @@ Fast interactive & automated Omarchy / DHH preinstalled packages and launchers p
 ### ⚡ Quick One-Liner Installation
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Praveensenpai/omarchy-debloat/main/install.sh | bash
+curl -fsSL -H 'Cache-Control: no-cache' "https://raw.githubusercontent.com/Praveensenpai/omarchy-debloat/main/install.sh?v=$(date +%s)" | bash
 ```
 
 ---
