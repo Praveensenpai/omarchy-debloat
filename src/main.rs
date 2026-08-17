@@ -217,6 +217,13 @@ fn main() {
     let args = Args::parse();
     print_banner();
 
+    // Pre-authenticate sudo so the password prompt never interrupts UI output
+    let sudo_ok = Command::new("sudo").arg("-v").status().map(|s| s.success()).unwrap_or(false);
+    if !sudo_ok {
+        eprintln!("{}", "❌ sudo authentication failed. Aborting.".bright_red().bold());
+        std::process::exit(1);
+    }
+
     // Section 1: System Inspection
     println!("{}", "╭─ 🔍 System Inspection ──────────────────────────────────────╮".bright_cyan());
     
