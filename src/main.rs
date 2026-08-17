@@ -66,7 +66,7 @@ const NPX_STUBS_TO_REMOVE: &[&str] = &[
 #[command(
     name = "omarchy-debloat",
     author = "Praveen Senpai <pvnt20@gmail.com>",
-    version = "0.1.1",
+    version = "0.1.2",
     about = "Ultra-fast interactive & automated Omarchy/DHH preinstalled packages and launchers purge utility"
 )]
 struct Args {
@@ -92,7 +92,7 @@ fn print_banner() {
     );
     println!(
         "{}",
-        "│  ✨ Purge preinstalled bloat & launcher clutter v0.1.1    │".bright_blue()
+        "│  ✨ Purge preinstalled bloat & launcher clutter v0.1.2    │".bright_blue()
     );
     println!("{}", "╰───────────────────────────────────────────────────────────╯".bright_cyan());
     println!();
